@@ -1,4 +1,4 @@
-package dto;
+package api.dto;
 
 public class AuthPasswordDto {
 
@@ -6,9 +6,7 @@ public class AuthPasswordDto {
 
     private String password;
 
-    public AuthPasswordDto(String login, String password) {
-        this.login = login;
-        this.password = password;
+    public AuthPasswordDto() {
     }
 
     public String getLogin() {

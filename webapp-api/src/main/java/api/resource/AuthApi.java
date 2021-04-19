@@ -1,4 +1,4 @@
-package resource;
+package api.resource;
 
 public class AuthApi {
 
