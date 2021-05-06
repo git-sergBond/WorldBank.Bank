@@ -23,8 +23,9 @@ localhost:1521
 ServiceName: ORCLCDB.localdomain
 ServiceName: ORCLPDB1.localdomain
 ```
+At first start, run ```create user.sql``` under ```sys``` user at ```ORCLPDB1.localdomain```
 ```
-sergo / O123seR_go123 (SYSKM)
+testuser / testuser (SYSKM)
 localhost:1521
 ServiceName: ORCLPDB1.localdomain
 ```
