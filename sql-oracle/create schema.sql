@@ -112,4 +112,6 @@ create table audit_payment_status (
     message varchar(300),
     foreign key (payment_status_id) references payment_status (id),
     primary key (id)
-)
+);
+
+create index audit_payment_status_id on audit_payment_status(payment_status_id);
