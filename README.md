@@ -23,7 +23,7 @@ localhost:1521
 ServiceName: ORCLCDB.localdomain
 ServiceName: ORCLPDB1.localdomain
 ```
-At first start, run ```create user.sql``` under ```sys``` user at ```ORCLPDB1.localdomain```
+At first start, run ```sql-oracle/create user.sql``` under ```sys``` user at ```ORCLPDB1.localdomain```
 ```
 testuser / testuser (SYSKM)
 localhost:1521
@@ -37,4 +37,5 @@ sudo nano /etc/docker/daemon.json
 }
 sudo systemctl restart docker
 ```
+To run migration run ```sql-oracle/create schema.sql``` by user ```testuser``` 
 
