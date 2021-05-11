@@ -18,7 +18,8 @@ You can overwrite properties in ```docker/application.properties```
 Connection to Oracle DB
 ---
 ```
-sys / Oradoc_db1 (SYSDBA)
+SqlDeveloper: sys / Oradoc_db1 (SYSDBA)
+IDEA: sys as sysdba / Oradoc_db1 
 localhost:1521
 ServiceName: ORCLCDB.localdomain
 ServiceName: ORCLPDB1.localdomain
