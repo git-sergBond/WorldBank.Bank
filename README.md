@@ -40,3 +40,12 @@ sudo systemctl restart docker
 ```
 To run migration run ```sql-oracle/create schema.sql``` by user ```testuser``` 
 
+Migrations DB
+------
+Migrations work by Liquibase.<br>
+To specify credentials and connect ti DB, edit file: liquibase.properties
+<br>
+To Run migrations run command:
+```
+mvn -f ./migration-db/pom.xml liquibase:update
+```

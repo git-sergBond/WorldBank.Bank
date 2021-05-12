@@ -26,7 +26,7 @@
     </changeSet>
     <changeSet author="sergo (generated)" id="1620787134116-9">
         <createTable tableName="ACCOUNT" tablespace="USERS">
-            <column defaultValueComputed="&quot;TESTUSER1&quot;.&quot;SEQ_ACCOUNT_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
+            <column defaultValueComputed="&quot;SEQ_ACCOUNT_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="SYS_C0011073"/>
             </column>
             <column name="CLIENT_ID" type="NUMBER(19, 0)">
@@ -42,7 +42,7 @@
     </changeSet>
     <changeSet author="sergo (generated)" id="1620787134116-10">
         <createTable tableName="BALANCE" tablespace="USERS">
-            <column defaultValueComputed="&quot;TESTUSER1&quot;.&quot;SEQ_BALANCE_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
+            <column defaultValueComputed="&quot;SEQ_BALANCE_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="SYS_C0011079"/>
             </column>
             <column name="ACCOUNT_ID" type="NUMBER(19, 0)">
@@ -58,7 +58,7 @@
     </changeSet>
     <changeSet author="sergo (generated)" id="1620787134116-11">
         <createTable tableName="CLIENT" tablespace="USERS">
-            <column defaultValueComputed="&quot;TESTUSER1&quot;.&quot;SEQ_CLIENT_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
+            <column defaultValueComputed="&quot;SEQ_CLIENT_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="SYS_C0011068"/>
             </column>
             <column name="FIRST_NAME" type="VARCHAR2(255 BYTE)">
@@ -87,7 +87,7 @@
     </changeSet>
     <changeSet author="sergo (generated)" id="1620787134116-12">
         <createTable tableName="PAYMENT_REQUEST" tablespace="USERS">
-            <column defaultValueComputed="&quot;TESTUSER1&quot;.&quot;SEQ_PAYMENT_REQUEST_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
+            <column defaultValueComputed="&quot;SEQ_PAYMENT_REQUEST_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="SYS_C0011089"/>
             </column>
             <column name="CLIENT_ID" type="NUMBER(19, 0)">
@@ -115,7 +115,7 @@
     </changeSet>
     <changeSet author="sergo (generated)" id="1620787134116-13">
         <createTable tableName="PAYMENT_STATUS" tablespace="USERS">
-            <column defaultValueComputed="&quot;TESTUSER1&quot;.&quot;SEQ_PAYMENT_STATUS_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
+            <column defaultValueComputed="&quot;SEQ_PAYMENT_STATUS_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="SYS_C0011113"/>
             </column>
             <column name="PAYMENT_REQUEST_ID" type="NUMBER(19, 0)">
@@ -146,7 +146,7 @@
     </changeSet>
     <changeSet author="sergo (generated)" id="1620787134116-14">
         <createTable tableName="PAYMENT_STATUS_AUDIT" tablespace="USERS">
-            <column defaultValueComputed="&quot;TESTUSER1&quot;.&quot;SEQ_TRANSACTION_AUDIT_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
+            <column defaultValueComputed="&quot;SEQ_TRANSACTION_AUDIT_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="SYS_C0011140"/>
             </column>
             <column name="PAYMENT_STATUS_ID" type="NUMBER(19, 0)">
@@ -186,7 +186,7 @@
     </changeSet>
     <changeSet author="sergo (generated)" id="1620787134116-15">
         <createTable tableName="PAYMENT_TEMPLATE" tablespace="USERS">
-            <column defaultValueComputed="&quot;TESTUSER1&quot;.&quot;SEQ_PAYMENT_TEMPLATE_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
+            <column defaultValueComputed="&quot;SEQ_PAYMENT_TEMPLATE_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="SYS_C0011099"/>
             </column>
             <column name="CLIENT_ID" type="NUMBER(19, 0)">
@@ -208,7 +208,7 @@
     </changeSet>
     <changeSet author="sergo (generated)" id="1620787134116-16">
         <createTable tableName="TRANSACTION" tablespace="USERS">
-            <column defaultValueComputed="&quot;TESTUSER1&quot;.&quot;SEQ_TRANSACTION_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
+            <column defaultValueComputed="&quot;SEQ_TRANSACTION_01&quot;.&quot;NEXTVAL&quot;" name="ID" type="NUMBER(19, 0)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="SYS_C0011124"/>
             </column>
             <column name="ACCOUNT_FROM_ID" type="NUMBER(19, 0)">
