@@ -49,3 +49,8 @@ To Run migrations run command:
 ```
 mvn -f ./migration-db/pom.xml liquibase:update
 ```
+
+API
+---
+You can easy test api with [new feature of iDEA](https://www.jetbrains.com/help/idea/testing-restful-web-services.html)
+if open file: [webapp-api/testing-api.http](webapp-api/testing-api.http)
