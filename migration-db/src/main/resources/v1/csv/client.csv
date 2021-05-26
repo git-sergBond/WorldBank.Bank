@@ -1,0 +1,4 @@
+id,first_name,middle_name,last_name,passwd,birthday,address,mobile_plone,email
+
+1,"Sergey","Bond","Sergeevich","123",1998-02-02,"Belgorod","+7 999 99 99","bond@gmail.com"
+2,"Anton1","Anton2","Anton3","12345",1978-02-02,"Saratov","+7 999 99 99","anton@gmail.com"

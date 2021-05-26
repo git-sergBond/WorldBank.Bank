@@ -1,3 +1,12 @@
+Stack
+---
+JVM: Graal
+Lang: Java
+Framework: Spring
+DataBase: Oracle
+Migrations: Liquibase
+ORM: MyBatis / SpringData / JdbcTemplate
+
 Docker
 ---
 Compile ```.jar``` file from sources:```mvn package -f ./pom.xml```
@@ -38,7 +47,7 @@ sudo nano /etc/docker/daemon.json
 }
 sudo systemctl restart docker
 ```
-To run migration run ```sql-oracle/create schema.sql``` by user ```testuser``` 
+To run migration run ```sql-oracle/v1.1-init-schema.sql``` by user ```testuser``` 
 
 Migrations DB
 ------

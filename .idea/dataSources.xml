@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="testuser" uuid="4f997bab-2469-4516-a76f-6d04f6299bef">
+    <data-source source="LOCAL" name="sys" uuid="e5461999-d20b-4187-b2ea-6c50dea1a935">
       <driver-ref>oracle.19</driver-ref>
       <synchronize>true</synchronize>
+      <remarks>sys</remarks>
       <auto-commit>false</auto-commit>
       <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
       <jdbc-url>jdbc:oracle:thin:@//localhost:1521/ORCLPDB1.localdomain</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="pdb1 sys" uuid="11cfbe6d-3177-4d26-9b50-398239d7b985">
+    <data-source source="LOCAL" name="testuser" uuid="8d9540c3-28ea-4816-b4e8-b2fa07a44d52">
       <driver-ref>oracle.19</driver-ref>
       <synchronize>true</synchronize>
-      <auto-commit>false</auto-commit>
-      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@//localhost:1521/ORCLPDB1.localdomain</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="testuser1" uuid="cb580b39-2b98-4330-937a-7828cdb32244">
-      <driver-ref>oracle.19</driver-ref>
-      <synchronize>true</synchronize>
+      <remarks>testuser</remarks>
       <auto-commit>false</auto-commit>
       <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
       <jdbc-url>jdbc:oracle:thin:@//localhost:1521/ORCLPDB1.localdomain</jdbc-url>

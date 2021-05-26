@@ -1,0 +1,18 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet id="v1.1-init-schema-01" author="sergo-bond">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="client" />
+                <tableExists tableName="account" />
+                <tableExists tableName="balance" />
+                <tableExists tableName="payment_request" />
+                <tableExists tableName="payment_template" />
+                <tableExists tableName="payment_status" />
+                <tableExists tableName="transaction" />
+                <tableExists tableName="payment_status_AUDIT" />
+            </not>
+        </preConditions>
+        <sqlFile dbms="oracle" path="sql/v1.1-init-schema.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+</databaseChangeLog>
