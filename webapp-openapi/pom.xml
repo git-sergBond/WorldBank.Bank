@@ -57,15 +57,14 @@
                                 ${project.basedir}/src/main/resources/openapi.yml
                             </inputSpec>
                             <generatorName>spring</generatorName>
-                            <apiPackage>com.baeldung.openapi.api</apiPackage>
-                            <modelPackage>com.baeldung.openapi.model</modelPackage>
-                            <supportingFilesToGenerate>
-                                ApiUtil.java
-                            </supportingFilesToGenerate>
+                            <apiPackage>com.example.webapp.openapi.api</apiPackage>
+                            <modelPackage>com.example.webapp.openapi.model</modelPackage>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <configOptions>
                                 <useBeanValidation>false</useBeanValidation>
                                 <delegatePattern>true</delegatePattern>
                                 <useTags>true</useTags>
+                                <interfaceOlnly>true</interfaceOlnly>
                             </configOptions>
                         </configuration>
                     </execution>
