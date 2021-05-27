@@ -65,6 +65,7 @@
                             <configOptions>
                                 <useBeanValidation>false</useBeanValidation>
                                 <delegatePattern>true</delegatePattern>
+                                <useTags>true</useTags>
                             </configOptions>
                         </configuration>
                     </execution>
