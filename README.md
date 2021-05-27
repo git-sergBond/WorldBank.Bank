@@ -3,6 +3,7 @@ Stack
 JVM: Graal
 Lang: Java
 Framework: Spring
+API: openapi-generator + spring-fox(swagger-ui)
 DataBase: Oracle
 Migrations: Liquibase
 ORM: MyBatis / SpringData / JdbcTemplate
