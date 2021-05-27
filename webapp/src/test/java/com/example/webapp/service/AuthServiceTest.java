@@ -1,7 +1,7 @@
 package com.example.webapp.service;
 
 
-import api.dto.AuthPasswordDto;
+import com.example.webapp.openapi.model.EmailPasswordDto;
 import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -30,9 +30,9 @@ class AuthServiceTest {
     public void loginTrue() {
         MockitoAnnotations.initMocks(this);
 
-        AuthPasswordDto authPasswordDto = new AuthPasswordDto();
+        EmailPasswordDto authPasswordDto = new EmailPasswordDto();
         authPasswordDto.setPassword("1");
-        authPasswordDto.setLogin("1");
+        authPasswordDto.setEmail("1");
         Assertions.assertTrue(authService.login(authPasswordDto));
     }
 
@@ -44,9 +44,9 @@ class AuthServiceTest {
     public void loginFalse() {
         MockitoAnnotations.initMocks(this);
 
-        AuthPasswordDto authPasswordDto = new AuthPasswordDto();
+        EmailPasswordDto authPasswordDto = new EmailPasswordDto();
         authPasswordDto.setPassword("1");
-        authPasswordDto.setLogin("111");
+        authPasswordDto.setEmail("111");
         Assertions.assertFalse(authService.login(authPasswordDto));
     }
 
@@ -75,7 +75,7 @@ class AuthServiceTest {
     public void loginError2() {
         MockitoAnnotations.initMocks(this);
         try {
-            boolean res = authService.login(new AuthPasswordDto());
+            boolean res = authService.login(new EmailPasswordDto());
             Assertions.fail("IllegalArgumentException was expected but returned: " + res);
         } catch (IllegalArgumentException e) {
             assert true;
@@ -92,7 +92,7 @@ class AuthServiceTest {
     public void loginError3() {
         MockitoAnnotations.initMocks(this);
         try {
-            AuthPasswordDto authPasswordDto = new AuthPasswordDto();
+            EmailPasswordDto authPasswordDto = new EmailPasswordDto();
             authPasswordDto.setPassword("1");
             //authPasswordDto.setLogin("111");
 
@@ -113,9 +113,9 @@ class AuthServiceTest {
     public void loginError4() {
         MockitoAnnotations.initMocks(this);
         try {
-            AuthPasswordDto authPasswordDto = new AuthPasswordDto();
+            EmailPasswordDto authPasswordDto = new EmailPasswordDto();
             //authPasswordDto.setPassword("1");
-            authPasswordDto.setLogin("111");
+            authPasswordDto.setEmail("111");
 
             boolean res = authService.login(authPasswordDto);
             Assertions.fail("IllegalArgumentException was expected but returned: " + res);
@@ -134,9 +134,9 @@ class AuthServiceTest {
     public void loginError5() {
         MockitoAnnotations.initMocks(this);
         try {
-            AuthPasswordDto authPasswordDto = new AuthPasswordDto();
+            EmailPasswordDto authPasswordDto = new EmailPasswordDto();
             authPasswordDto.setPassword("");
-            authPasswordDto.setLogin("");
+            authPasswordDto.setEmail("");
 
             boolean res = authService.login(authPasswordDto);
             Assertions.fail("IllegalArgumentException was expected but returned: " + res);
@@ -155,9 +155,9 @@ class AuthServiceTest {
     public void loginError6() {
         MockitoAnnotations.initMocks(this);
         try {
-            AuthPasswordDto authPasswordDto = new AuthPasswordDto();
+            EmailPasswordDto authPasswordDto = new EmailPasswordDto();
             authPasswordDto.setPassword("1");
-            authPasswordDto.setLogin("");
+            authPasswordDto.setEmail("");
 
             boolean res = authService.login(authPasswordDto);
             Assertions.fail("IllegalArgumentException was expected but returned: " + res);
@@ -176,9 +176,9 @@ class AuthServiceTest {
     public void loginError7() {
         MockitoAnnotations.initMocks(this);
         try {
-            AuthPasswordDto authPasswordDto = new AuthPasswordDto();
+            EmailPasswordDto authPasswordDto = new EmailPasswordDto();
             authPasswordDto.setPassword("");
-            authPasswordDto.setLogin("111");
+            authPasswordDto.setEmail("111");
 
             boolean res = authService.login(authPasswordDto);
             Assertions.fail("IllegalArgumentException was expected but returned: " + res);

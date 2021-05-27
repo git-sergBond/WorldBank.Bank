@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
   version: 1.0.0
-  title: '[$$] Bank'
-  description: 'Store you money =)'
+  title: 'Bank'
+  description: 'Store you money'
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
@@ -13,13 +13,24 @@ tags:
     description: Allow signup
 paths:
   /api/auth/signin:
-    get:
+    post:
+      operationId: signIn
       tags:
         - Authentification
       summary: Sign In
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailPasswordDto'
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
   /api/auth/signup:
     get:
       tags:
@@ -28,3 +39,16 @@ paths:
       responses:
         '200':
           description: OK
+
+components:
+  schemas:
+    EmailPasswordDto:
+      type: object
+      description: email / password
+      properties:
+        email:
+          type: string
+          description: e-mail
+        password:
+          type: string
+          description: password

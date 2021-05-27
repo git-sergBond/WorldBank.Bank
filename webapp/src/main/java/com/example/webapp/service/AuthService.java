@@ -1,6 +1,6 @@
 package com.example.webapp.service;
 
-import api.dto.AuthPasswordDto;
+import com.example.webapp.openapi.model.EmailPasswordDto;
 import com.example.webapp.repository.ClientRepository;
 import io.micrometer.core.instrument.util.StringUtils;
 import org.springframework.stereotype.Service;
@@ -14,17 +14,14 @@ public class AuthService {
         this.clientRepository = clientRepository;
     }
 
-    public boolean login(AuthPasswordDto authPasswordDto) {
-        if (authPasswordDto == null
-                || StringUtils.isBlank(authPasswordDto.getLogin())
-                || StringUtils.isBlank(authPasswordDto.getPassword())) {
+    public boolean login(EmailPasswordDto pair) {
+        if (pair == null
+                || StringUtils.isBlank(pair.getEmail())
+                || StringUtils.isBlank(pair.getPassword())) {
             throw new IllegalArgumentException("wrong arguments");
         }
-
-        boolean isAuthenticated = clientRepository.findByEmail(authPasswordDto.getLogin())
-                .map(client -> client.getPasswd().equals(authPasswordDto.getPassword()))
+        return clientRepository.findByEmail(pair.getEmail())
+                .map(client -> client.getPasswd().equals(pair.getPassword()))
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
-
-        return isAuthenticated;
     }
 }
