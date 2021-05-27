@@ -16,7 +16,7 @@
 
     <modules>
         <module>webapp</module>
-        <module>webapp-api</module>
+        <module>webapp-openapi</module>
         <module>migration-db</module>
     </modules>
 

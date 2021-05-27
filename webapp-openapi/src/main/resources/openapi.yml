@@ -1,0 +1,30 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: '[$$] Bank'
+  description: 'Store you money =)'
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+tags:
+  - name: Authentification
+    description: Allow signin
+  - name: Registration
+    description: Allow signup
+paths:
+  /api/auth/signin:
+    get:
+      tags:
+        - Authentification
+      summary: Sign In
+      responses:
+        '200':
+          description: OK
+  /api/auth/signup:
+    get:
+      tags:
+        - Registration
+      summary: Sign Up
+      responses:
+        '200':
+          description: OK
