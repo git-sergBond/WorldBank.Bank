@@ -62,5 +62,4 @@ mvn -f ./migration-db/pom.xml liquibase:update
 
 API
 ---
-You can easy test api with [new feature of iDEA](https://www.jetbrains.com/help/idea/testing-restful-web-services.html)
-if open file: [webapp-api/testing-api.http](webapp-api/testing-api.http)
+You can easy test api by [http://127.0.0.1:8080/swagger-ui/](link)
