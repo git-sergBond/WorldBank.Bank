@@ -10,10 +10,10 @@ API
 Stack
 ---
 ```
-Lang: Java (GraalVM)
-Framework: Spring (Boot, Data, Liquibase)
+Base: Maven Java GraalVM
+Framework: Spring Boot, Spring Data
 API: openapi-generator, openapi-ui
-DB: Oracle 
+DB: Oracle, Liquibase
 ```
 
 Docker
