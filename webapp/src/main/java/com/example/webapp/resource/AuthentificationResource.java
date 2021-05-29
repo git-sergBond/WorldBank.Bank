@@ -5,6 +5,7 @@ import com.example.webapp.openapi.model.ClientDto;
 import com.example.webapp.openapi.model.EmailPasswordDto;
 import com.example.webapp.service.AuthService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,11 +19,6 @@ public class AuthentificationResource implements AuthentificationApi {
 
     @Override
     public ResponseEntity<ClientDto> _signIn(@RequestBody EmailPasswordDto emailPasswordDto) {
-        boolean r = authService.login(emailPasswordDto);
-        ClientDto c = new ClientDto();
-        if (r) {
-            c.setEmail(emailPasswordDto.getEmail());
-        }
-        return new ResponseEntity<ClientDto>(c, null, HttpStatus.OK);
+        return new ResponseEntity<>(authService.login(emailPasswordDto), null, HttpStatus.OK);
     }
 }
