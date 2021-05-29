@@ -2,8 +2,10 @@ TODO
 ---
 1. Change: spring-boot to spring-cloud in webapp-openapi
 
-API [webapp-swagger-ui](http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config)
+API 
 ---
+1. <b>You can get contract by link</b> [openapi-ui](http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config)
+2. <b>Generate api</b> Execute command: ```mvn -f ./webapp-openapi/pom.xml clean compile```
 
 Stack
 ---
