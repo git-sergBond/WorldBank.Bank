@@ -2,7 +2,7 @@ TODO
 ---
 1. Change: spring-boot to spring-cloud in webapp-openapi
 
-API [webapp-swagger-ui](http://localhost:8080/swagger-ui/)
+API [webapp-swagger-ui](http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config)
 ---
 
 Stack
