@@ -66,15 +66,14 @@
                             <generatorName>spring</generatorName>
                             <apiPackage>com.example.webapp.openapi.api</apiPackage>
                             <modelPackage>com.example.webapp.openapi.model</modelPackage>
-                            <supportingFilesToGenerate>
-                                ApiUtil.java
-                            </supportingFilesToGenerate>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <configOptions>
                                 <library>spring-boot</library>
                                 <useBeanValidation>false</useBeanValidation>
                                 <delegatePattern>true</delegatePattern>
                                 <useTags>true</useTags>
-                                <interfaceOlnly>true</interfaceOlnly>
+                                <interfaceOnly>true</interfaceOnly>
+                                <skipDefaultInterface>true</skipDefaultInterface>
                             </configOptions>
                             <ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
                         </configuration>
