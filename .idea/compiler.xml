@@ -9,6 +9,7 @@
         <module name="webapp" />
         <module name="migration-db" />
         <module name="webapp-api" />
+        <module name="create-user-db" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

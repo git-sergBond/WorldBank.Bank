@@ -1,30 +1,39 @@
+API [webapp-swagger-ui](http://localhost:8080/swagger-ui/)
+---
+
 Stack
 ---
-JVM: Graal
-Lang: Java
-Framework: Spring
-API: openapi-generator + spring-fox(swagger-ui)
-DataBase: Oracle
-Migrations: Liquibase
-ORM: MyBatis / SpringData / JdbcTemplate
+```
+Lang: Java (GraalVM)
+Framework: Spring (Boot, Data, Liquibase)
+API: openapi-generator, openapi-ui
+DB: Oracle 
+```
 
 Docker
 ---
-Compile ```.jar``` file from sources:```mvn package -f ./pom.xml```
+1. Compile ```.jar``` file from sources:```mvn package -f ./pom.xml```
 <br>Build image:```sudo docker build -f docker/Dockerfile -t spring-boot-docker .```
 <br>Run application:```sudo docker run -p 8080:8080 spring-boot-docker```
-<hr/>
-Run Oracle DB: 
-sudo docker run -d --name oracle-db -p 1521:1521 store/oracle/database-enterprise:12.2.0.1
-<hr/>
-<br>Stop containers: ```sudo docker stop $(sudo docker ps -aq)```
-<br>Delete container```sudo docker container rm 123```
-External properties
----
-You can overwrite properties in ```docker/application.properties```
-<br>To check properties:
+
+2. Run Oracle DB: 
+```sudo docker run -d --name oracle-db -p 1521:1521 store/oracle/database-enterprise:12.2.0.1```
+3. <i>External properties</i>.
+Properties can be owerwriten in file.
+```docker/application.properties```
+To see properties:
 ```curl -XGET -H "Content-type: application/json" 'http://localhost:8080/actuator/env'```
 
+Migrations DB (Liquibase)
+------
+1. <i>Create users for this DB.</i>
+Specify credentials and connect ti DB, edit file: liquibase.properties.
+And run command:
+```mvn -f ./create-user-db/pom.xml liquibase:update```
+2. <i>Create schema AND run migrations.<i> Specify credentials and connect ti DB, edit file: liquibase.properties.
+And run command:
+```mvn -f ./migration-db/pom.xml liquibase:update```
+   
 Connection to Oracle DB
 ---
 ```
@@ -34,7 +43,6 @@ localhost:1521
 ServiceName: ORCLCDB.localdomain
 ServiceName: ORCLPDB1.localdomain
 ```
-At first start, run ```sql-oracle/create user.sql``` under ```sys``` user at ```ORCLPDB1.localdomain```
 ```
 testuser / testuser (SYSKM)
 localhost:1521
@@ -48,18 +56,3 @@ sudo nano /etc/docker/daemon.json
 }
 sudo systemctl restart docker
 ```
-To run migration run ```sql-oracle/v1.1-init-schema.sql``` by user ```testuser``` 
-
-Migrations DB
-------
-Migrations work by Liquibase.<br>
-To specify credentials and connect ti DB, edit file: liquibase.properties
-<br>
-To Run migrations run command:
-```
-mvn -f ./migration-db/pom.xml liquibase:update
-```
-
-API
----
-You can easy test api by [http://127.0.0.1:8080/swagger-ui/](link)

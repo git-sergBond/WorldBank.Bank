@@ -18,6 +18,7 @@
         <module>webapp</module>
         <module>webapp-openapi</module>
         <module>migration-db</module>
+        <module>create-user-db</module>
     </modules>
 
 </project>

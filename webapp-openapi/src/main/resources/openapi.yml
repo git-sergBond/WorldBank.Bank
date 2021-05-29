@@ -16,7 +16,7 @@ paths:
     post:
       operationId: signIn
       tags:
-        - Authentification
+        - authentification
       summary: Sign In
       requestBody:
         required: true
@@ -30,11 +30,11 @@ paths:
           content:
             application/json:
               schema:
-                type: boolean
+                $ref: '#/components/schemas/ClientDto'
   /api/auth/signup:
     get:
       tags:
-        - Registration
+        - registration
       summary: Sign Up
       responses:
         '200':
@@ -52,3 +52,10 @@ components:
         password:
           type: string
           description: password
+    ClientDto:
+      type: object
+      description: client info
+      properties:
+        email:
+          type: string
+          description: e-mail
