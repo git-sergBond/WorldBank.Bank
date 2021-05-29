@@ -10,10 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AuthService {
 
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
     public ClientDto login(EmailPasswordDto pair) {
         if (pair == null
