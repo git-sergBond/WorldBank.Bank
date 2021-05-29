@@ -69,11 +69,15 @@
                             <generateSupportingFiles>false</generateSupportingFiles>
                             <configOptions>
                                 <library>spring-boot</library>
+                                <swaggerDocketConfig>true</swaggerDocketConfig>
+                                <virtualService>false</virtualService>
+                                <dateLibrary>java8</dateLibrary>
                                 <useBeanValidation>false</useBeanValidation>
                                 <delegatePattern>true</delegatePattern>
                                 <useTags>true</useTags>
                                 <interfaceOnly>true</interfaceOnly>
                                 <skipDefaultInterface>true</skipDefaultInterface>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
                             </configOptions>
                             <ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
                         </configuration>

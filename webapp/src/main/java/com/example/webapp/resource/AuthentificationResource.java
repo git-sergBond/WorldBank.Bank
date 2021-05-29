@@ -19,7 +19,7 @@ public class AuthentificationResource implements AuthentificationApi {
     }
 
     @Override
-    public ResponseEntity<ClientDto> signIn(@RequestBody EmailPasswordDto emailPasswordDto) {
+    public ResponseEntity<ClientDto> _signIn(@RequestBody EmailPasswordDto emailPasswordDto) {
         boolean r = authService.login(emailPasswordDto);
         ClientDto c = new ClientDto();
         if (r) {
