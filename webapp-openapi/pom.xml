@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>webapp-api</artifactId>
+    <artifactId>webapp-openapi</artifactId>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -52,9 +52,10 @@
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>4.2.3</version>
+                <version>3.3.4</version>
                 <executions>
                     <execution>
+                        <phase>compile</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -65,13 +66,17 @@
                             <generatorName>spring</generatorName>
                             <apiPackage>com.example.webapp.openapi.api</apiPackage>
                             <modelPackage>com.example.webapp.openapi.model</modelPackage>
-                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <supportingFilesToGenerate>
+                                ApiUtil.java
+                            </supportingFilesToGenerate>
                             <configOptions>
+                                <library>spring-boot</library>
                                 <useBeanValidation>false</useBeanValidation>
                                 <delegatePattern>true</delegatePattern>
                                 <useTags>true</useTags>
                                 <interfaceOlnly>true</interfaceOlnly>
                             </configOptions>
+                            <ignoreFileOverride>${project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
                         </configuration>
                     </execution>
                 </executions>

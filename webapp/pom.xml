@@ -75,12 +75,12 @@
 			<version>2.8.9</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- swagger-ui -->
+		<!-- swagger-ui
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.5.9</version>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 
 	<build>
