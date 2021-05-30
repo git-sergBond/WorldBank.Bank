@@ -1,33 +1,52 @@
 package com.example.webapp.service;
 
 
+import com.example.webapp.domain.Client;
 import com.example.webapp.openapi.model.EmailPasswordDto;
+import com.example.webapp.repository.ClientRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
 class AuthServiceTest {
 
     @InjectMocks
-    AuthService authService;
+    private AuthService authService;
+
+    @Mock
+    private ClientRepository clientRepository;
 
     /**
-     * IF login == password
-     * EXPECTED: true
+     * IF login found
+     * AND password is correct for login
+     * EXPECTED: client info
      */
     @Test
     public void loginTrue() {
-        EmailPasswordDto authPasswordDto = new EmailPasswordDto();
-        authPasswordDto.setPassword("1");
-        authPasswordDto.setEmail("1");
-        //.login(authPasswordDto)
-        Assertions.assertNotNull(authService);
+        String email = "1";
+        String password = "1";
+
+        when(clientRepository.findByEmail(eq(email))).thenReturn(
+                Optional.of(Client.builder().passwd(password).email(email).build())
+        );
+
+        var result = authService.login(new EmailPasswordDto()
+                .email(email).password(password)
+        );
+
+        assertEquals(email, result.getEmail());
     }
 
     /**

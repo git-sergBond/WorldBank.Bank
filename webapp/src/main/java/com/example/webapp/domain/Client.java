@@ -1,13 +1,15 @@
 package com.example.webapp.domain;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.Instant;
 
 @Entity
-@Data
+@Builder
+@Getter
+@Setter
 public class Client {
 
     @Id
