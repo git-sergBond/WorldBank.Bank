@@ -4,6 +4,7 @@ package com.example.webapp.service;
 import com.example.webapp.openapi.model.EmailPasswordDto;
 import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
@@ -15,11 +16,16 @@ class AuthServiceTest {
     AuthService authService;
 
     /**
-     * TODO method @Before / @BeforeClass not work
+     * TODO method @Before / @BeforeClass /  before , runWith , rule /  not work
      */
     @Before
-    public void setUp() {
-        System.out.println("BEFORE");
+    public void init1() {
+        System.out.println("----- init1 -----");
+    }
+
+    @BeforeEach
+    public void init2() {
+        MockitoAnnotations.initMocks(this);
     }
 
     /**
@@ -28,12 +34,10 @@ class AuthServiceTest {
      */
     @Test
     public void loginTrue() {
-        MockitoAnnotations.initMocks(this);
-
         EmailPasswordDto authPasswordDto = new EmailPasswordDto();
         authPasswordDto.setPassword("1");
         authPasswordDto.setEmail("1");
-       // Assertions.assertTrue(authService.login(authPasswordDto));
+        Assertions.assertTrue(authService.login(authPasswordDto));
     }
 
     /**
