@@ -10,6 +10,8 @@ import java.time.Instant;
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Client {
 
     @Id
@@ -18,13 +20,13 @@ public class Client {
     Long id;
 
     @NotNull
-    String first_name;
+    String firstName;
 
     @NotNull
-    String middle_name;
+    String middleName;
 
     @NotNull
-    String last_name;
+    String lastName;
 
     @NotNull
     Instant birthday;
@@ -32,8 +34,8 @@ public class Client {
     @NotNull
     String address;
 
-
-    String mobile_plone;
+    @Column(name = "mobile_plone")//TODO rename column
+    String mobilePhone;
 
 
     String email;

@@ -15,9 +15,9 @@ public class RegistrationResource implements RegistrationApi {
 
     private final RegistrationService registrationService;
 
-    @Override
-    public ResponseEntity<ClientDto> _apiAuthSignupPost(EmailPasswordDto emailPasswordDto) {
-        return new ResponseEntity<ClientDto>(registrationService.register(emailPasswordDto), HttpStatus.OK);
-    }
 
+    @Override
+    public ResponseEntity<ClientDto> _apiAuthSignupPost(ClientDto clientDto) {
+        return new ResponseEntity<ClientDto>(registrationService.register(clientDto), HttpStatus.OK);
+    }
 }

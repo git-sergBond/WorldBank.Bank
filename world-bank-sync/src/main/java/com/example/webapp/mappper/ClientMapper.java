@@ -11,6 +11,12 @@ public interface ClientMapper {
 
     ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
 
-    @Mapping(source = "email", target = "email")
+    @Mapping(target = "birthday", dateFormat = "yyyy-MM-dd")
+    @Mapping(target = "phone", source = "mobilePhone")
     ClientDto toDto(Client client);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "birthday", dateFormat = "yyyy-MM-dd")//TODO not work in swagger (make something with openapi)
+    @Mapping(target = "mobilePhone", source = "phone")
+    Client toModel(ClientDto client);
 }

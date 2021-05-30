@@ -15,21 +15,18 @@ public class RegistrationService {
 
     private final ClientRepository clientRepository;
 
-    public ClientDto register(EmailPasswordDto pair) {
-        if (pair == null
-                || StringUtils.isBlank(pair.getEmail())
-                || StringUtils.isBlank(pair.getPassword())) {
+    public ClientDto register(ClientDto clientDto) {
+        if (clientDto == null
+                || StringUtils.isBlank(clientDto.getEmail())
+                || StringUtils.isBlank(clientDto.getPasswd())) {
             throw new IllegalArgumentException("Wrong arguments");
         }
 
-        if(clientRepository.findByEmail(pair.getEmail()).isPresent()) {
+        if(clientRepository.findByEmail(clientDto.getEmail()).isPresent()) {
             throw new IllegalArgumentException("This email already registered");
         }
 
-        var client = Client.builder()
-                .passwd(pair.getPassword())
-                .email(pair.getEmail())
-                .build();
+        var client = ClientMapper.INSTANCE.toModel(clientDto);
 
         var saved = clientRepository.save(client);
 
