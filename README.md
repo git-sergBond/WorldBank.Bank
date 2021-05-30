@@ -47,6 +47,7 @@ Business process
 Stack
 ---
 * Lang: Java GraalVM
+* CodeGen: lombok, mapStruct
 * Builder: Maven
 * Framework: Spring Boot, Spring Data
 * Testing: Junit 5, Mockito

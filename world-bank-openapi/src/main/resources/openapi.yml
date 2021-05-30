@@ -41,7 +41,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/EmailPasswordDto'
+              $ref: '#/components/schemas/ClientDto'
       responses:
         '200':
           description: OK
@@ -69,3 +69,24 @@ components:
         email:
           type: string
           description: e-mail
+        passwd:
+          type: string
+          description: passwd
+        first-name:
+          type: string
+          description: first-name
+        middle-name:
+          type: string
+          description: middle-name
+        last-name:
+          type: string
+          description: last-name
+        birthday:
+          type: string
+          description: birthday
+        address:
+          type: string
+          description: address
+        phone:
+          type: string
+          description: phone
