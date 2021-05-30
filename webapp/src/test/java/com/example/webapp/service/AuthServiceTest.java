@@ -4,17 +4,16 @@ package com.example.webapp.service;
 import com.example.webapp.domain.Client;
 import com.example.webapp.openapi.model.EmailPasswordDto;
 import com.example.webapp.repository.ClientRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
@@ -28,13 +27,8 @@ class AuthServiceTest {
     @Mock
     private ClientRepository clientRepository;
 
-    /**
-     * IF login found
-     * AND password is correct for login
-     * EXPECTED: client info
-     */
     @Test
-    public void loginTrue() {
+    public void loginCorrect() {
         String email = "1";
         String password = "1";
 
@@ -49,156 +43,115 @@ class AuthServiceTest {
         assertEquals(email, result.getEmail());
     }
 
-    /**
-     * IF login != password
-     * EXPECTED: false
-     */
     @Test
-    public void loginFalse() {
-        MockitoAnnotations.initMocks(this);
+    public void loginIncorrect() {
+        String email = "1";
+        String password = "1";
+        String realPassword = "2";
 
-        EmailPasswordDto authPasswordDto = new EmailPasswordDto();
-        authPasswordDto.setPassword("1");
-        authPasswordDto.setEmail("111");
-        //Assertions.assertFalse(authService.login(authPasswordDto));
+        when(clientRepository.findByEmail(eq(email))).thenReturn(
+                Optional.of(Client.builder().passwd(realPassword).email(email).build())
+        );
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            authService.login(new EmailPasswordDto()
+                    .email(email).password(password)
+            );
+        });
+
+        assertEquals("Incorrect password", exception.getMessage());
     }
 
-    /**
-     * IF authPasswordDto == null
-     * EXPECTED: IllegalArgumentException
-     */
     @Test
-    public void loginError1() {
-        MockitoAnnotations.initMocks(this);
-        try {
-           // boolean res = authService.login(null);
-          //  Assertions.fail("IllegalArgumentException was expected but returned: " + res);
-        } catch (IllegalArgumentException e) {
-            assert true;
-        } catch (Exception e) {
-            Assertions.fail("IllegalArgumentException was expected but ", e);
-        }
+    public void loginEmptyEmailPasswordDto() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            authService.login(null);
+        });
+
+        assertEquals("Wrong arguments", exception.getMessage());
     }
 
-    /**
-     * IF login == null AND password == null
-     * EXPECTED: IllegalArgumentException
-     */
     @Test
-    public void loginError2() {
-        MockitoAnnotations.initMocks(this);
-        try {
-          //  boolean res = authService.login(new EmailPasswordDto());
-         //   Assertions.fail("IllegalArgumentException was expected but returned: " + res);
-        } catch (IllegalArgumentException e) {
-            assert true;
-        } catch (Exception e) {
-            Assertions.fail("IllegalArgumentException was expected but ", e);
-        }
+    public void loginNullEmailOrPasswordCase1() {
+        String email = null;
+        String password = null;
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            authService.login(new EmailPasswordDto()
+                    .email(email).password(password)
+            );
+        });
+
+        assertEquals("Wrong arguments", exception.getMessage());
     }
 
-    /**
-     * IF login == null
-     * EXPECTED: IllegalArgumentException
-     */
     @Test
-    public void loginError3() {
-        MockitoAnnotations.initMocks(this);
-        try {
-            EmailPasswordDto authPasswordDto = new EmailPasswordDto();
-            authPasswordDto.setPassword("1");
-            //authPasswordDto.setLogin("111");
+    public void loginNullEmailOrPasswordCase2() {
+        String email = "1";
+        String password = null;
 
-           // boolean res = authService.login(authPasswordDto);
-          //  Assertions.fail("IllegalArgumentException was expected but returned: " + res);
-        } catch (IllegalArgumentException e) {
-            assert true;
-        } catch (Exception e) {
-            Assertions.fail("IllegalArgumentException was expected but ", e);
-        }
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            authService.login(new EmailPasswordDto()
+                    .email(email).password(password)
+            );
+        });
+
+        assertEquals("Wrong arguments", exception.getMessage());
     }
 
-    /**
-     * IF password == null
-     * EXPECTED: IllegalArgumentException
-     */
     @Test
-    public void loginError4() {
-        MockitoAnnotations.initMocks(this);
-        try {
-            EmailPasswordDto authPasswordDto = new EmailPasswordDto();
-            //authPasswordDto.setPassword("1");
-            authPasswordDto.setEmail("111");
+    public void loginNullEmailOrPasswordCase3() {
+        String email = null;
+        String password = "1";
 
-           // boolean res = authService.login(authPasswordDto);
-           // Assertions.fail("IllegalArgumentException was expected but returned: " + res);
-        } catch (IllegalArgumentException e) {
-            assert true;
-        } catch (Exception e) {
-            Assertions.fail("IllegalArgumentException was expected but ", e);
-        }
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            authService.login(new EmailPasswordDto()
+                    .email(email).password(password)
+            );
+        });
+
+        assertEquals("Wrong arguments", exception.getMessage());
     }
 
-    /**
-     * IF login is Empty AND passwod is Empty
-     * EXPECTED: IllegalArgumentException
-     */
     @Test
-    public void loginError5() {
-        MockitoAnnotations.initMocks(this);
-        try {
-            EmailPasswordDto authPasswordDto = new EmailPasswordDto();
-            authPasswordDto.setPassword("");
-            authPasswordDto.setEmail("");
+    public void loginEmptyEmailOrPasswordCase1() {
+        String email = "";
+        String password = "";
 
-           // boolean res = authService.login(authPasswordDto);
-           // Assertions.fail("IllegalArgumentException was expected but returned: " + res);
-        } catch (IllegalArgumentException e) {
-            assert true;
-        } catch (Exception e) {
-            Assertions.fail("IllegalArgumentException was expected but ", e);
-        }
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            authService.login(new EmailPasswordDto()
+                    .email(email).password(password)
+            );
+        });
+
+        assertEquals("Wrong arguments", exception.getMessage());
     }
 
-    /**
-     * IF login is Empty
-     * EXPECTED: IllegalArgumentException
-     */
     @Test
-    public void loginError6() {
-        MockitoAnnotations.initMocks(this);
-        try {
-            EmailPasswordDto authPasswordDto = new EmailPasswordDto();
-            authPasswordDto.setPassword("1");
-            authPasswordDto.setEmail("");
+    public void loginEmptyEmailOrPasswordCase2() {
+        String email = "";
+        String password = "1";
 
-           // boolean res = authService.login(authPasswordDto);
-           // Assertions.fail("IllegalArgumentException was expected but returned: " + res);
-        } catch (IllegalArgumentException e) {
-            assert true;
-        } catch (Exception e) {
-            Assertions.fail("IllegalArgumentException was expected but ", e);
-        }
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            authService.login(new EmailPasswordDto()
+                    .email(email).password(password)
+            );
+        });
+
+        assertEquals("Wrong arguments", exception.getMessage());
     }
 
-    /**
-     * IF password is Empty
-     * EXPECTED: IllegalArgumentException
-     */
     @Test
-    public void loginError7() {
-        MockitoAnnotations.initMocks(this);
-        try {
-            EmailPasswordDto authPasswordDto = new EmailPasswordDto();
-            authPasswordDto.setPassword("");
-            authPasswordDto.setEmail("111");
+    public void loginEmptyEmailOrPasswordCase3() {
+        String email = "1";
+        String password = "";
 
-          //  boolean res = authService.login(authPasswordDto);
-         //   Assertions.fail("IllegalArgumentException was expected but returned: " + res);
-        } catch (IllegalArgumentException e) {
-            assert true;
-        } catch (Exception e) {
-            Assertions.fail("IllegalArgumentException was expected but ", e);
-        }
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            authService.login(new EmailPasswordDto()
+                    .email(email).password(password)
+            );
+        });
+
+        assertEquals("Wrong arguments", exception.getMessage());
     }
 }
