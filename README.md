@@ -15,6 +15,7 @@ Stack
 ```
 Base: Maven Java GraalVM
 Framework: Spring Boot, Spring Data
+Testing: Junit 5, Mockito
 API: openapi-generator, openapi-ui
 DB: Oracle, Liquibase
 ```
