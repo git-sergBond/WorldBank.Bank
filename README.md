@@ -8,7 +8,7 @@ TODO
 API 
 ---
 1. <b>You can get contract by link</b> [openapi-ui](http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config)
-2. <b>Generate api</b> Execute command: ```mvn -f ./webapp-openapi/pom.xml clean compile```
+2. <b>Generate api</b> Execute command: ```mvn -f ./world-bank-openapi/pom.xml clean compile```
 
 Stack
 ---
@@ -22,7 +22,7 @@ DB: Oracle, Liquibase
 
 Docker
 ---
-1. <b>Run application</b>. Compile ```.jar``` file from sources:```mvn package -f ./pom.xml```
+1. <b>Run application</b>. Compile ```.jar``` file from sources:```mvn -f ./world-bank-openapi/pom.xml clean compile && mvn -f ./world-bank-sync/pom.xml clean compile```
 <br>Build image:```sudo docker build -f docker/Dockerfile -t spring-boot-docker .```
 <br>Run application:```sudo docker run -p 8080:8080 spring-boot-docker```
 
