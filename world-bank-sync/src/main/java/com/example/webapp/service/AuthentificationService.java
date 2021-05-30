@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class AuthService {
+public class AuthentificationService {
 
     private final ClientRepository clientRepository;
 

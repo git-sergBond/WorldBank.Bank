@@ -19,10 +19,10 @@ import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-class AuthServiceTest {
+class AuthentificationServiceTest {
 
     @InjectMocks
-    private AuthService authService;
+    private AuthentificationService authentificationService;
 
     @Mock
     private ClientRepository clientRepository;
@@ -36,7 +36,7 @@ class AuthServiceTest {
                 Optional.of(Client.builder().passwd(password).email(email).build())
         );
 
-        var result = authService.login(new EmailPasswordDto()
+        var result = authentificationService.login(new EmailPasswordDto()
                 .email(email).password(password)
         );
 
@@ -54,7 +54,7 @@ class AuthServiceTest {
         );
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            authService.login(new EmailPasswordDto()
+            authentificationService.login(new EmailPasswordDto()
                     .email(email).password(password)
             );
         });
@@ -65,7 +65,7 @@ class AuthServiceTest {
     @Test
     public void loginEmptyEmailPasswordDto() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            authService.login(null);
+            authentificationService.login(null);
         });
 
         assertEquals("Wrong arguments", exception.getMessage());
@@ -77,7 +77,7 @@ class AuthServiceTest {
         String password = null;
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            authService.login(new EmailPasswordDto()
+            authentificationService.login(new EmailPasswordDto()
                     .email(email).password(password)
             );
         });
@@ -91,7 +91,7 @@ class AuthServiceTest {
         String password = null;
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            authService.login(new EmailPasswordDto()
+            authentificationService.login(new EmailPasswordDto()
                     .email(email).password(password)
             );
         });
@@ -105,7 +105,7 @@ class AuthServiceTest {
         String password = "1";
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            authService.login(new EmailPasswordDto()
+            authentificationService.login(new EmailPasswordDto()
                     .email(email).password(password)
             );
         });
@@ -119,7 +119,7 @@ class AuthServiceTest {
         String password = "";
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            authService.login(new EmailPasswordDto()
+            authentificationService.login(new EmailPasswordDto()
                     .email(email).password(password)
             );
         });
@@ -133,7 +133,7 @@ class AuthServiceTest {
         String password = "1";
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            authService.login(new EmailPasswordDto()
+            authentificationService.login(new EmailPasswordDto()
                     .email(email).password(password)
             );
         });
@@ -147,7 +147,7 @@ class AuthServiceTest {
         String password = "";
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            authService.login(new EmailPasswordDto()
+            authentificationService.login(new EmailPasswordDto()
                     .email(email).password(password)
             );
         });
