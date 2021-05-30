@@ -1,9 +1,7 @@
 package com.example.webapp.service;
 
-import com.example.webapp.domain.Client;
 import com.example.webapp.mappper.ClientMapper;
 import com.example.webapp.openapi.model.ClientDto;
-import com.example.webapp.openapi.model.EmailPasswordDto;
 import com.example.webapp.repository.ClientRepository;
 import io.micrometer.core.instrument.util.StringUtils;
 import lombok.AllArgsConstructor;
