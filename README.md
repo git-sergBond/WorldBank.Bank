@@ -13,9 +13,39 @@ API
     mvn -f ./world-bank-openapi/pom.xml clean compile
     ```
 
+Roles
+---
+1. Client
+2. Operator
+
+Business process
+---
+1. Operator register Client with identity document (Passport).
+2. Create card by Passport. Steps:
+   1. Operator create issue request to card (identity document)
+   2. Operator print form
+   3. Client sign form
+   4. Operator scan form
+   5. Operator see status card (request, rejected, issued, transition, delivered, givenClient)
+   5. Operator take card to owner (identity document)
+3. Operator connect to Client by Passport. Items:
+   1. Phone 
+   2. Email 
+4. Authenticate by:
+   1. Card 
+   2. Passport
+   3. Phone 
+   3. Email
+5. Client connect to Self Client items:
+   1. Phone
+   2. Email
+6. Client see balance.
+7. Client input money to Card by ATM(Microservice) -> ABS(Microservice) -> WorldBank(Microservice).
+8. Client transit money to another Client
+9. Client transit money to another self Card
+
 Stack
 ---
-
 * Lang: Java GraalVM
 * Builder: Maven
 * Framework: Spring Boot, Spring Data
