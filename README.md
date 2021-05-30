@@ -8,41 +8,59 @@ TODO
 API 
 ---
 1. <b>You can get contract by link</b> [openapi-ui](http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config)
-2. <b>Generate api</b> Execute command: ```mvn -f ./world-bank-openapi/pom.xml clean compile```
+2. <b>Generate api</b> Execute command: 
+    ```
+    mvn -f ./world-bank-openapi/pom.xml clean compile
+    ```
 
 Stack
 ---
-```
-Base: Maven Java GraalVM
-Framework: Spring Boot, Spring Data
-Testing: Junit 5, Mockito
-API: openapi-generator, openapi-ui
-DB: Oracle, Liquibase
-```
+
+* Lang: Java GraalVM
+* Builder: Maven
+* Framework: Spring Boot, Spring Data
+* Testing: Junit 5, Mockito
+* API: openapi-generator, openapi-ui
+* DB: Oracle, Liquibase
+* Env: Docker, Ubuntu Server
 
 Docker
 ---
-1. <b>Run application</b>. Compile ```.jar``` file from sources:```mvn -f ./world-bank-openapi/pom.xml clean compile && mvn -f ./world-bank-sync/pom.xml clean compile```
-<br>Build image:```sudo docker build -f docker/Dockerfile -t spring-boot-docker .```
+1. <b>Run application</b>. Compile ```.jar``` file from sources:
+    ```
+    mvn -f ./world-bank-openapi/pom.xml clean compile && mvn -f ./world-bank-sync/pom.xml clean compile
+    ```
+    Build image:
+   ```
+   sudo docker build -f docker/Dockerfile -t spring-boot-docker .
+   ```
 <br>Run application:```sudo docker run -p 8080:8080 spring-boot-docker```
 
 2. <b>Run Oracle DB</b>: 
-```sudo docker run -d --name oracle-db -p 1521:1521 store/oracle/database-enterprise:12.2.0.1```
+    ```
+    sudo docker run -d --name oracle-db -p 1521:1521 store/oracle/database-enterprise:12.2.0.1
+    ```
 3. <b>External properties</b>.
 Properties can be owerwriten in file.
 ```docker/application.properties```
 To see properties:
-```curl -XGET -H "Content-type: application/json" 'http://localhost:8080/actuator/env'```
+    ```
+    curl -XGET -H "Content-type: application/json" 'http://localhost:8080/actuator/env'
+    ```
 
 Migrations DB (Liquibase)
 ------
 1. <b>Create users for this DB.</b>
 Specify credentials and connect ti DB, edit file: liquibase.properties.
 And run command:
-```mvn -f ./db-create-user/pom.xml liquibase:update```
+   ```
+   mvn -f ./db-create-user/pom.xml liquibase:update
+   ```
 2. <b>Create schema AND run migrations.</b> Specify credentials and connect ti DB, edit file: liquibase.properties.
 And run command:
-```mvn -f ./db-migrations/pom.xml liquibase:update```
+   ```
+   mvn -f ./db-migrations/pom.xml liquibase:update
+   ```
    
 Connection to Oracle DB
 ---
