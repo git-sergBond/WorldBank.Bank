@@ -39,10 +39,10 @@ Migrations DB (Liquibase)
 1. <b>Create users for this DB.</b>
 Specify credentials and connect ti DB, edit file: liquibase.properties.
 And run command:
-```mvn -f ./create-user-db/pom.xml liquibase:update```
+```mvn -f ./db-create-user/pom.xml liquibase:update```
 2. <b>Create schema AND run migrations.</b> Specify credentials and connect ti DB, edit file: liquibase.properties.
 And run command:
-```mvn -f ./migration-db/pom.xml liquibase:update```
+```mvn -f ./db-migrations/pom.xml liquibase:update```
    
 Connection to Oracle DB
 ---
