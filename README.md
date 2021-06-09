@@ -71,6 +71,10 @@ Docker
     ```
     sudo docker run -d --name oracle-db -p 1521:1521 store/oracle/database-enterprise:12.2.0.1
     ```
+   OR
+   ```
+   sudo docker start oracle-db
+   ```
 3. <b>External properties</b>.
 Properties can be owerwriten in file.
 ```docker/application.properties```
@@ -107,7 +111,26 @@ testuser / testuser (SYSKM)
 localhost:1521
 ServiceName: ORCLPDB1.localdomain
 ```
-Troubleshooting
+
+Kafka
+---
+Consumer integration with
+```
+Correlation schema: MessageID to ReplyID
+MessageID save to (kafka-topic)atm-callback
+To payload of message put replyTo="atm-reply"
+
+ms-WorldBank listen (kafka-topic)atm-request
+ms-WorldBank create topic with replyTo
+ms-WorldBank send response to topic with replyTo
+```
+
+For run kafka broker ([Documentation to the docker image](https://github.com/lensesio/fast-data-dev)):
+```
+sudo docker run --rm --net=host lensesio/fast-data-dev
+```
+
+Troubleshooting (Ubuntu)
 ---
 if you can not connect to Oracle running under Docker, this can solve you problem:
 ```
