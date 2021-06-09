@@ -125,10 +125,13 @@ ms-WorldBank create topic with replyTo
 ms-WorldBank send response to topic with replyTo
 ```
 
-For run kafka broker ([Documentation to the docker image](https://github.com/lensesio/fast-data-dev)):
+For run kafka broker:
 ```
 sudo docker run --rm --net=host lensesio/fast-data-dev
 ```
+Links:
+- [UI for Kafka](http://127.0.0.1:3030/)
+- [Documentation to the docker image](https://github.com/lensesio/fast-data-dev)
 
 Troubleshooting (Ubuntu)
 ---

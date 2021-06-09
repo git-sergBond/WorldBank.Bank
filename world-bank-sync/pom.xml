@@ -29,6 +29,13 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- message broker -->
+
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
         <!-- data base -->
 
         <dependency>
