@@ -10,15 +10,16 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <modules>
-        <module>world-bank-openapi</module>
-        <module>world-bank-sync</module>
         <module>db-create-users</module>
         <module>db-migrations</module>
+        <module>world-bank-openapi</module>
+        <module>world-bank-impl</module>
     </modules>
 
 </project>

@@ -49,7 +49,7 @@ Stack
 * Lang: Java GraalVM
 * CodeGen: lombok, mapStruct
 * Builder: Maven
-* Framework: Spring Boot, Spring Data
+* Framework: Spring Boot, REST, Spring Data
 * Testing: Junit 5, Mockito
 * API: openapi-generator, openapi-ui
 * DB: Oracle, Liquibase
@@ -59,7 +59,7 @@ Docker
 ---
 1. <b>Run application</b>. Compile ```.jar``` file from sources:
     ```
-    mvn -f ./world-bank-openapi/pom.xml clean compile && mvn -f ./world-bank-sync/pom.xml clean compile
+    mvn clean package
     ```
     Build image:
    ```
@@ -69,6 +69,7 @@ Docker
 
 2. <b>Run Oracle DB</b>: 
     ```
+    sudo docker login -u <USERNAME> -p <PASSWORD>
     sudo docker run -d --name oracle-db -p 1521:1521 store/oracle/database-enterprise:12.2.0.1
     ```
    OR
@@ -89,7 +90,7 @@ Migrations DB (Liquibase)
 Specify credentials and connect ti DB, edit file: liquibase.properties.
 And run command:
    ```
-   mvn -f ./db-create-user/pom.xml liquibase:update
+   mvn -f ./db-create-users/pom.xml liquibase:update
    ```
 2. <b>Create schema AND run migrations.</b> Specify credentials and connect ti DB, edit file: liquibase.properties.
 And run command:
@@ -101,7 +102,8 @@ Connection to Oracle DB
 ---
 ```
 SqlDeveloper: sys / Oradoc_db1 (SYSDBA)
-IDEA: sys as sysdba / Oradoc_db1 
+IDEA: sys as sysdba / Oradoc_db1
+Navicat: system / Oradoc_db1
 localhost:1521
 ServiceName: ORCLCDB.localdomain
 ServiceName: ORCLPDB1.localdomain

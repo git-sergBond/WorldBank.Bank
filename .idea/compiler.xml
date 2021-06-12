@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="migration-db" />
         <module name="webapp-api" />
         <module name="db-create-users" />
-        <module name="world-bank-openapi" />
+        <module name="world-bank" />
         <module name="create-user-db" />
+        <module name="world-bank-openapi" />
         <module name="db-migrations" />
       </profile>
       <profile name="Annotation profile for world-bank" enabled="true">
@@ -23,17 +23,19 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.4.2.Final/mapstruct-processor-1.4.2.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.4.2.Final/mapstruct-1.4.2.Final.jar" />
         </processorPath>
-        <module name="world-bank" />
+        <module name="world-bank-impl" />
         <module name="world-bank-sync" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="webapp-openapi" target="11" />
+      <module name="WorldBank.Bank" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="world-bank" options="-parameters" />
+      <module name="world-bank" options="" />
+      <module name="world-bank-impl" options="-parameters" />
       <module name="world-bank-sync" options="-parameters" />
     </option>
   </component>
