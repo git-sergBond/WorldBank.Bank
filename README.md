@@ -5,6 +5,12 @@ TODO
 ---
 1. Change: spring-boot to spring-cloud in webapp-openapi
 
+Run local for development
+---
+```
+mvn install && mvn spring-boot:run -pl world-bank-impl
+```
+
 API 
 ---
 1. <b>You can get contract by link</b> [openapi-ui](http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config)
