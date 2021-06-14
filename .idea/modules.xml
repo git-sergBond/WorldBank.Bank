@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/WorldBank.Bank.iml" filepath="$PROJECT_DIR$/.idea/WorldBank.Bank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/world-bank.iml" filepath="$PROJECT_DIR$/world-bank.iml" />
     </modules>
   </component>
 </project>

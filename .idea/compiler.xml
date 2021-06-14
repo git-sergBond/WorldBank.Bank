@@ -3,40 +3,13 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="webapp-api" />
-        <module name="db-create-users" />
-        <module name="world-bank" />
-        <module name="create-user-db" />
-        <module name="world-bank-openapi" />
-        <module name="db-migrations" />
-      </profile>
-      <profile name="Annotation profile for world-bank" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.4.2.Final/mapstruct-processor-1.4.2.Final.jar" />
-          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.4.2.Final/mapstruct-1.4.2.Final.jar" />
-        </processorPath>
-        <module name="world-bank-impl" />
-        <module name="world-bank-sync" />
-      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="webapp-openapi" target="11" />
-      <module name="WorldBank.Bank" target="11" />
+      <module name="db-create-users" target="11" />
+      <module name="db-migrations" target="11" />
+      <module name="world-bank" target="11" />
+      <module name="world-bank-impl" target="11" />
+      <module name="world-bank-openapi" target="11" />
     </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="world-bank" options="" />
-      <module name="world-bank-impl" options="-parameters" />
-      <module name="world-bank-sync" options="-parameters" />
-    </option>
   </component>
 </project>
