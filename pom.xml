@@ -20,6 +20,7 @@
         <module>db-migrations</module>
         <module>world-bank-openapi</module>
         <module>world-bank-impl</module>
+        <module>kafkaTest</module>
     </modules>
 
 </project>

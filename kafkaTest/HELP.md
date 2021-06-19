@@ -1,0 +1,1 @@
+docker run --rm --net=host -e ADV_HOST=<IP> lensesio/fast-data-dev
