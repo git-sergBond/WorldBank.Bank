@@ -3,7 +3,10 @@ package com.example.kafkatest.service.kafka;
 import com.example.kafkatest.dto.TransactionDto;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.Header;
+import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +24,24 @@ public class KafkaConsumer {
         System.out.println("!!!" + message);
     }
 */
-
+//TODO try read ConsumerRecord
     @KafkaListener(topics = "${spring.kafka.topics.atm-request}", groupId = "${spring.kafka.consumer.group-id}", containerFactory = "singleFactory")
-    public void payListener(TransactionDto message) {
-        System.out.println("!!!" + message);
+    public void payListener(@Payload TransactionDto message,
+                            @Headers MessageHeaders messageHeaders,
+                            @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String receivedKey,
+                            @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int receivedPartition,
+                            @Header(KafkaHeaders.RECEIVED_TOPIC) String receivedTopic,
+                            @Header(KafkaHeaders.CORRELATION_ID) String correlationId
+    ) {
+        System.out.println("- - - - - - START - - - - - - - - -");
+        System.out.println("data: " + message);
+        System.out.println("- - - - - - - - - - - - - - -");
+        System.out.println("correlationId: " + correlationId);
+        System.out.println("- - - - - - - - - - - - - - -");
+        messageHeaders.keySet().forEach(key -> {
+            Object value = messageHeaders.get(key);
+            System.out.println(key + " -> " + value);
+        });
+        System.out.println("- - - - - - END- - - - - - - - -");
     }
 }
