@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class TransactionDtoProducerReply {
+public class TransactionDtoReplyProducer {
 
     private final KafkaTemplate<String, TransactionDto> kafkaTemplate;
 
@@ -19,6 +19,5 @@ public class TransactionDtoProducerReply {
                 .add(KafkaHeaders.CORRELATION_ID, correlationId.getBytes())
                 .add("X-is-ok", new byte[] { (byte)(isOk ? 1 : 0) });
         kafkaTemplate.send(record);
-
     }
 }

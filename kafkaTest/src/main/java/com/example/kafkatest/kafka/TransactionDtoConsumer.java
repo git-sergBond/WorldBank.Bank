@@ -14,7 +14,7 @@ import java.nio.ByteBuffer;
 @RequiredArgsConstructor
 public class TransactionDtoConsumer {
 
-    private final TransactionDtoProducerReply replyProducer;
+    private final TransactionDtoReplyProducer replyProducer;
 
     //TODO try @SendTo for delete useless Producer
     //TODO try read ConsumerRecord
@@ -39,4 +39,40 @@ public class TransactionDtoConsumer {
         replyProducer.reply("messageKey", message, correlationId, replyToTopic, replyToPartitionIdInt, true);
     }
 
+
+    /* TODO TRY this way
+
+    //TODO try @SendTo for delete useless Producer
+    //TODO try read Message<TransactionDto>
+    @KafkaListener(topics = "${spring.kafka.topics.atm-request}",
+            groupId = "${spring.kafka.consumer.group-id}", //TODO make experiment with multiple consumer group
+            containerFactory = "singleFactory")
+    public void payListener(ConsumerRecord<String, TransactionDto> record) {
+
+        String key = record.key();
+        TransactionDto data = record.value();
+
+        //TODO solve this problem with serialisation, and deserialization
+        String correlationId = new String(record.headers().lastHeader(KafkaHeaders.CORRELATION_ID).value());
+        String replyToTopic = new String(record.headers().lastHeader(KafkaHeaders.REPLY_TOPIC).value());
+        Integer replyToPartitionIdInt = ByteBuffer.wrap(record.headers().lastHeader(KafkaHeaders.REPLY_TOPIC).value()).getInt();
+        //TODO solve this problem with serialisation, and deserialization
+
+        System.out.println("- - - - - - READ - - - - - - - - -");
+        System.out.println("key: " + key);
+        System.out.println("correlationId: " + correlationId);
+        System.out.println("replyToTopic: " + replyToTopic);
+        System.out.println("replyToPartitionId: " + replyToPartitionIdInt);
+        System.out.println("data: " + data);
+
+
+        //TODO ERROR replyProducer.reply(record.key(), dto, correlationId, replyToTopic, replyToPartitionIdInt, true);
+
+        ProducerRecord<String, TransactionDto> replRecord = new ProducerRecord<>(replyToTopic, replyToPartitionIdInt, key, data);
+        replRecord.headers()
+                .add(KafkaHeaders.CORRELATION_ID, correlationId.getBytes())
+                .add("X-is-ok", new byte[] { 1 });
+        kafkaTemplate.send(replRecord);
+    }
+*/
 }
